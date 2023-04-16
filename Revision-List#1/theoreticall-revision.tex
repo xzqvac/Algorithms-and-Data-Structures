@@ -130,9 +130,10 @@
     \end{lstlisting}
     
     \pagebreak
-    
+
     \subsection*{Zadanie 5}
     Jak jest średnia a jaka pesymistyczna złożoność \verb+quick_sort+. Odpowiedź uzasadnij.
+
     \begin{center}
     Średnia złożoność czasowa algorytmu \verb+quick_sort+ wynosi $O(nlogn)$. \\
     pesymistyczna złożoność czasowa algorytmu \verb+quick_sort+ wynosi $O(n^2)$. \\
@@ -147,6 +148,38 @@
                     quick_sort(t + k, n - k); // posortuj prawa
                 }
             }
-        \end{lstlisting}
+    \end{lstlisting}
 
-    \end{document}
+    \subsection*{Zadanie 6}
+    Jaka jest złożoność funkcji buildheap? Przeprowadź dowód - uzasadnij swoją odpowiedź.
+
+    \begin{lstlisting}
+        void sift_down(double t[], int n, int i)
+        {   /*
+            Przesiej element t[i] w dol kopca:
+            t[2*i+1] - lewe dziecko t[i]
+            t[2*i+2] - prawe dziecko t[i]
+            jesli ktores z dzieci jest wieksze od t[i]:
+            - zamien t[i] z tym dzieckiem miejscami
+            - sprawdz ponownie t[i] w nowym miejscu
+            */
+
+            int k = i;
+            double x = t[i];
+            // x mniejszy od wiekszego syna
+            while (((k += k + 2) < n && t[k - 1] < t[k] || --k < n) && x < t[k]) 
+            {
+                t[i] = t[k];
+                i = k;
+            }
+            t[i] = x;
+        }
+
+        void build_max_heap(double t[])
+        {
+            for (int i = n / 2; i >= 0; i--)
+                sift_down(t, i);
+        }
+    \end{lstlisting}
+
+\end{document}
