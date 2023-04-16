@@ -12,6 +12,13 @@
 \usepackage{multicol}
 \usepackage[utf8]{inputenc}
 \usepackage[breaklinks]{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset { %
+    language=C++,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+}
 
 \title{
     \Huge\textbf{Algorytmy i struktury danych} \\
@@ -44,6 +51,32 @@
             \verb+insertion_sort+ dla tablicy tabA wykona \textbf{21 porównań}. \\
             Złożoność czasowa: $O(n^2)$
         \end{center}
+    \end{center}
+
+    \subsection*{Zadanie 2}
+    Ile co najwyżej porównań (między elementami tablic) wykona procedura scalająca \verb+merge+ dwie tablice n-elementowe?
+    \begin{center}
+        Procedura scalająca dwie tablice n-elementowe \verb+merge+ wykona co najwyżej $2n - 1$ \textbf{porównań} \\ 
+        w przypadku, gdy elementy tablic są posortowane naprzemiennie rosnąco. \\
+        Złożoność czasowa procedury merge dla każdego przypadku: $O(n)$
+        \begin{lstlisting}
+        void merge(int n, int k, double leftTable[], double rightTable[]) {
+        int i = 0; 
+        int j = k; 
+        int l = 0; 
+        while (i < k && j < n) 
+            if (leftTable[i] <= leftTable[j]) 
+                rightTable[l++] = leftTable[i++];
+            else
+                rightTable[l++] = leftTable[j++];
+
+        while (i < k)
+            leftTable[--j] = leftTable[--k];
+
+        for (i = 0; i < j; i++)
+            leftTable[i] = rightTable[i];
+        }
+        \end{lstlisting}
     \end{center}
         
 \end{document}
