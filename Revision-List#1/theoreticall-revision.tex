@@ -128,5 +128,25 @@
             }
         }
     \end{lstlisting}
+    
+    \pagebreak
+    
+    \subsection*{Zadanie 5}
+    Jak jest średnia a jaka pesymistyczna złożoność \verb+quick_sort+. Odpowiedź uzasadnij.
+    \begin{center}
+    Średnia złożoność czasowa algorytmu \verb+quick_sort+ wynosi $O(nlogn)$. \\
+    pesymistyczna złożoność czasowa algorytmu \verb+quick_sort+ wynosi $O(n^2)$. \\
+    \end{center}
 
-\end{document}
+    \begin{lstlisting}
+            void quick_sort(double t[], int n)
+            {
+                if (n > 1) {
+                    int k = partition(t, n);  // podziel na dwie czesci
+                    quick_sort(t, k);         // posortuj lewa
+                    quick_sort(t + k, n - k); // posortuj prawa
+                }
+            }
+        \end{lstlisting}
+
+    \end{document}
