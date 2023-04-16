@@ -78,5 +78,27 @@
         }
         \end{lstlisting}
     \end{center}
-        
+    
+    \subsection*{Zadanie 3}
+    Jaka jest pesymistyczna złożoność czasowa procedury \verb+merge_sort+? Odpowiedź uzasadnij.
+    \begin{center}
+        Złożoność czasowa procedury \verb+merge_sort+ wynosi $O(nlogn)$, ponieważ każde wywołanie procedury 
+        \verb+merge_sort+ dzieli tablicę na dwie części o połowie długości, a następnie wywołuje procedurę \verb+merge+ 
+        na tych dwóch częściach. Złożoność czasowa nie zależy od ilości elementów i tego jak są posortowane. 
+        Algorym \verb+merge_sort+ składa się z dwóch etapów: divide i merge. \\
+        \begin{center}
+            Złożoność czasowa etapu divide wynosi $O(n)$, ponieważ wykonujemy $n - 1$ podziałów. \\
+            Złożoność czasowa etapu merge wynosi $O(nlogn)$, ponieważ wykonujemy $lb n$ scaleń mając zawsze
+            do dyspozycji $n$ elementów. \\                
+        \end{center}
+        Razem złożoność czasowa algorytmu \verb+merge_sort+ wynosi: $O(n) + O(nlogn) = O(nlogn)$
+    \end{center}
+    \begin{gather*}
+        \text{Dowód metodą rekurencji uniwersalnej:} \\
+        T(n) = 2T(n/2) + O(n) \\
+        f(n) = n^{log_2 2} = n \\
+        \text{Rozważamy drugi przypadek:} \\
+        T(n) = O(n \log n)
+    \end{gather*}
+
 \end{document}
