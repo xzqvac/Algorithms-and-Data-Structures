@@ -20,7 +20,7 @@
     basicstyle=\footnotesize,% basic font setting
 }
 
-\title{
+\title {
     \Huge\textbf{Algorytmy i struktury danych} \\
     \vspace{2mm}
     \huge{Sortowanie i kopce} 
@@ -100,5 +100,33 @@
         \text{Rozważamy drugi przypadek:} \\
         T(n) = O(n \log n)
     \end{gather*}
+
+    \subsection*{Zadanie 4}
+    Ile co najwyżej porównań (między elementami tablicy) wykona procedura partition?
+    \begin{center}
+        Procedura partition wykona co najwyżej $n + 1$ \textbf{porównań}. \\
+    \end{center}
+
+    \begin{lstlisting}
+        int partition(double t[], int n) 
+        {
+            int k = -1;
+            double x = t[n / 2];
+            for (;;) {
+                do
+                    ++k;
+                while (t[k] < x);
+
+                do
+                    --n;
+                while (t[n] > x);
+
+                if (k < n)
+                    std::swap(t[k], t[n]);
+                else
+                    return k;
+            }
+        }
+    \end{lstlisting}
 
 \end{document}
