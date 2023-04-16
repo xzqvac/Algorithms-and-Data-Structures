@@ -1,0 +1,49 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=3cm]{geometry}
+\usepackage[edges]{forest}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[breaklinks]{hyperref}
+
+\title{
+    \Huge\textbf{Algorytmy i struktury danych} \\
+    \vspace{2mm}
+    \huge{Sortowanie i kopce} 
+    \date{}
+}
+
+\begin{document}
+    \maketitle
+    \boldmath
+    \section*{Przygotowanie do kolokwium}
+    Przyjmując, że \verb+tabA[] = {1, 2, 3, 4, 5, 6, 7}+ oraz \verb+tabB[] = {7, 6, 5, 4, 3, 2, 1}+ i stosując algorytmy
+    sortujące ściśle według procedur z pliku sort2023.cc wykonaj polecenia:
+
+    \subsection*{Zadanie 1}
+    Ile dokładnie porównań (między elementami tablic) wykona \verb+insertion_sort(tabB)+, a ile \verb+insertion_sort(tabA)+?
+
+    \begin{center}
+        \textbf{Przypadek optymistyczny}
+        \begin{center}
+            Dla tablicy posortowanej rosnąco o długości n, \verb+insertion_sort+ wykona \textbf{n-1 porównań}. \\
+            \verb+insertion_sort+ dla tablicy tabA wykona \textbf{6 porównań}. \\ 
+            Złożoność czasowa: $O(n)$
+        \end{center}
+
+        \textbf{Przypadek pesymistyczny}
+        \begin{center}
+            Dla tablicy posortowanej malejąco o długości n, \verb+insertion_sort+ wykona $\frac{n^2 - n}{2}$ \textbf{porównań}. \\ 
+            \verb+insertion_sort+ dla tablicy tabA wykona \textbf{21 porównań}. \\
+            Złożoność czasowa: $O(n^2)$
+        \end{center}
+    \end{center}
+        
+\end{document}
