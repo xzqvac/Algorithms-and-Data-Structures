@@ -181,5 +181,39 @@
                 sift_down(t, i);
         }
     \end{lstlisting}
+    
+    \pagebreak
+    \subsection*{Zadanie 11}
+    Czy ciąg \verb+{23, 17, 14, 6, 13, 10, 1, 5, 7, 12}+ jest kopcem?
+    \begin{center}
+        Ciąg nie jest kopcem, ponieważ węzeł o wartości 7 nie spełnia warunku kopca. \\
+        Niespełnionym warunkiem kopca jest to, że dziecko nie może być większe od swojego rodzica. \\
+        \vspace{5mm}
+
+        \begin{forest}
+            for tree={circle, draw, minimum size=4ex, inner sep=1pt, s sep=5mm, anchor=south, fill=green}
+            [23
+                [17
+                    [6
+                        [5]
+                        [7, fill=red!50]
+                    ]
+                    [13 [12]
+                        [, no edge, draw=none, fill=none]
+                    ]
+                ]
+                [14
+                    [10
+                        [, no edge, draw=none, fill=none]
+                        [, no edge, draw=none, fill=none]
+                    ]
+                    [1
+                        [, no edge, draw=none, fill=none]
+                        [, no edge, draw=none, fill=none]
+                    ]
+                ]
+            ]
+        \end{forest}
+    \end{center}
 
 \end{document}
