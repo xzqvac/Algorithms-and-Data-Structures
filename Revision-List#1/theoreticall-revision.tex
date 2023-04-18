@@ -151,7 +151,7 @@
     \end{lstlisting}
 
     \subsection*{Zadanie 6}
-    Jaka jest złożoność funkcji buildheap? Przeprowadź dowód - uzasadnij swoją odpowiedź.
+    Jaka jest złożoność funkcji \textbf{buildheap}? Przeprowadź dowód - uzasadnij swoją odpowiedź.
 
     \begin{lstlisting}
         void sift_down(double t[], int n, int i)
@@ -181,8 +181,48 @@
                 sift_down(t, i);
         }
     \end{lstlisting}
+
+    \begin{flushleft}
+        Złożoność czasowa funkcji \textbf{buildheap} wynosi $O(n)$. \textbf{Dowód:} \\
+        \vspace{1mm}
+        Na każdym poziomie oprócz ostatniego, węzły mogą mieć maksymalnie dwójkę dzieci: lewe i prawe. Dlatego
+        przesiewając, porównujemy maksymalnie dwa razy. Ostatni poziom drzewa to $n/2$ węzłów. 
+        Węzły te nie mają potomków, zatem nie możemy przesiewać. Poziom wyżej to $n/4$ węzłów. Maksymalnie można wykonać 
+        1 przesianie, ponieważ węzeł na tym poziomie może mieć tylko dzieci. Poziom wyżej to $n/8$ węzłów. Węzły te
+        mają maksymalnie dzieci i potomka. Maksymalnie można wykonać 2 przesiania, etc. Ilość porównań \verb+sift_down+ to ciąg:
+    \end{flushleft}
+        
+    \begin{center}
+        $2(\frac{n}{2} \cdot 0 + \frac{n}{4} \cdot 1 + \frac{n}{8} \cdot 2 + ...)$
+    \end{center}
+ 
+    \noindent Po przekształceniu wzory widoczne jest to, że składa się z on nieskończonych ciągów geometrycznych. Jeśli chcemy 
+    policzyć sumę tych ciągów, to możemy użyć wzoru na sumę ciągu geometrycznego. Można to zrobić pod warunkiem, Jeśli
+    ciąg jest zbieżny, a więc ma skończoną ilość elementów. W naszym przypadku ciąg jest skończony, ponieważ
+    ilość porównań jest ograniczona przez ilość węzłów w drzewie. Dlatego możemy policzyć sumę ciągu geometrycznego.
+    Iloczyn q wynosi 1/2, zatem spełniony jest warunek o zbieżności ciągu. Wzór na sumę ciągu geometrycznego to:
     
-    \pagebreak
+    \begin{center}
+        $S = \frac{a}{1-q}$
+    \end{center}    
+
+    Ilość porównań wykonywanych przez funkcję \verb+sift_down+ opisana jest za pomocą poniższego wzoru.
+
+    \begin{align*}
+        2 \sum_{i=1}^{h-1} \frac{n}{2^{i+1}} \cdot i                                                 &                                               \\
+        2 (\frac{n}{4} \cdot 1 + \frac{n}{8} \cdot 2 + \frac{n}{16} \cdot 3 + \frac{n}{32} \cdot 4 + & \dots)                                        \\
+        \frac{n}{2} (\frac{1}{1} + \frac{2}{2} + \frac{3}{4} + \frac{4}{8} +                         & \dots)                                        \\
+        \frac{1}{1} +  \frac{1}{2} +  \frac{1}{4} +  \frac{1}{8} +                                   & \dots = \frac{\frac{1}{1}}{1-\frac{1}{2}} = 2 \\
+        \frac{1}{2} +  \frac{1}{4} +  \frac{1}{8} +                                                  & \dots = 1                                     \\
+        \frac{1}{4} +  \frac{1}{8} +                                                                 & \dots = 0.5                                   \\
+        \frac{1}{8} +                                                                                & \dots = 0.25                                  \\
+                                                                                                     & \dots
+    \end{align*}
+
+    \begin{gather*}
+        \frac{n}{2} \cdot \frac{2}{1-\frac{1}{2}} = \frac{n}{2} \cdot 4 = 2n = O(n)
+    \end{gather*}
+    
     \subsection*{Zadanie 11}
     Czy ciąg \verb+{23, 17, 14, 6, 13, 10, 1, 5, 7, 12}+ jest kopcem?
     \begin{center}
@@ -216,6 +256,8 @@
         \end{forest}
     \end{center}
 
+    \pagebreak
+    
     \subsection*{Zadanie 12}
     Zilustruj działanie procedury buildheap dla ciągu {5,3,17,10,84,19,6,22,9}. 
     Narysuj na kartce wygląd tablicy/kopca po każdym wywołaniu procedury przesiej.
