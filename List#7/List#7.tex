@@ -1,0 +1,62 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[polish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=3cm]{geometry}
+\usepackage[edges]{forest}
+\usepackage{listings}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc}
+\usepackage[breaklinks]{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset { %
+    language=C++,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize,% basic font setting
+}
+
+\title {
+    \Huge\textbf{Algorytmy i struktury danych} \\
+    \vspace{2mm}
+    \huge{Lista zadań 7 - B-drzewa} 
+    \date{}
+}
+
+\begin{document}
+    \maketitle
+    \boldmath
+    \section*{Zadanie 1}
+        Jakie informacje przechowujemy w węźle B-drzewa? Podaj definicję
+        B-drzewa
+
+        \begin{lstlisting}
+            struct BTree
+            {
+                bool isLeaf;
+                size_t n;
+                int32_t *keys;
+                BTree **children;
+            };
+        \end{lstlisting}
+
+        W węźle B-drzewa możemy przechowywać kilka wartości posortowane niemalejąco.
+        W B-drzewie każda wartość ma wskaźnik na lewe i prawe dziecko. Lewe dziecko
+        zawiera wartości mniejsze od wartości rodzica, prawe dziecko zawiera wartości
+        większe bądź równe od wartości rodzica. Każdy węzeł za wyjątkiem korzenia 
+        będzie miał o jedno dziecko więcej niż ma kluczy.
+        \begin{enumerate}
+            \item Każdy węzeł posiada n kluczy posortowanynch niemalejąco
+            \item Każdy węzeł posiada n + 1 wskaźników na swoje dzieci
+            \item Każdy węzeł posiada minimalnie T - 1 kluczy(nie dotyczy korzenia)
+            \item Każdy węzeł może mieć maksymalnie 2T - 1 kluczy
+            \item Wszystkie liście są na tym samym poziomie
+            \item Dziecko pomiędz kluczem k1 a kluczem k2, zawiera klucze większe
+            od k1 i mniejsze od k2
+        \end{enumerate} 
+    
+\end{document}
