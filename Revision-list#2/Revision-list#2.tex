@@ -74,4 +74,47 @@
             insert(tree->right, x); 
     }
     \end{lstlisting}
+
+    \section*{Zadanie 4}
+
+    \begin{itemize}
+        \item Narysuj drzewo BST reprezentowane przez listę par: 1:2, 2:4, 3:2, 4:5, 6:7, 7:9, 8:7, 9:5.
+        \item Wypisz jego klucze w porządku: INORDER, PREORDER, POSTORDER.
+    \end{itemize}
+
+    \begin{lstlisting}
+    void inOrder(node *tree)
+    {
+        if (tree != nullptr)
+        {
+            inOrder(tree->left);	 // wypisze klucze z lewego poddrzewa
+            std::cout << tree->key;  // wypisz klucz z wezla
+            inOrder(tree->right);	 // wypisze klucze z lewego poddrzewa
+        }
+    }
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    void preOrder(node *tree)
+    {
+        if (tree != nullptr)
+        {
+            std::cout << tree->key;  // najpierw wypisz klucz z wezla
+            preOrder(tree->left);	 // a potem klucze z lewego
+            preOrder(tree->right);	 // i prawego poddrzewa
+        }
+    }
+    \end{lstlisting}
+
+    \begin{lstlisting}
+    void postOrder(node *tree)
+    {
+        if (tree != nullptr)
+        {
+            postOrder(tree->left);	 // wypisz klucze z poddrzewa lewego,
+            postOrder(tree->right);	 // potem z prawego,
+            std::cout << tree->key;  // a na koncu klucz z wezla
+        }
+    }
+    \end{lstlisting}
 \end{document}
