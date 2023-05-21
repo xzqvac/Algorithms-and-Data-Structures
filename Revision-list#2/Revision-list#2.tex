@@ -36,6 +36,7 @@
             \item Klucze w lewym poddrzewie są mniejsze od klucza w danym węźle.
             \item Klucze w prawym poddrzewie są większe lub równe kluczowi w danym węźle.
         \end{itemize}
+
     \section*{Zadanie 2}
     Napisz procedurę node* find(node* tree, int x), która zwraca wskaźnik na węzeł 
     zawierający x lub NULL, jeśli nie ma takiego węzła.
@@ -56,6 +57,21 @@
         if (tree->key == x) return tree;		   
         if (tree->key > x) return find_recursive(tree->left, x);										
         return find(tree->right, x); 
+    }
+    \end{lstlisting}
+
+    \section*{Zadanie 3}
+    Napisz procedurę void insert(node *tree, int x) (dodaje do drzewa tree klucz x).
+    \begin{lstlisting}
+    void insert(node *&tree, int x) // wstawianie (rekurencyjnie)
+    {
+        if (tree == nullptr)	 
+            tree = new node(x); 
+
+        else if (tree->key > x)			   
+            insert(tree->left, x);  
+        else							   
+            insert(tree->right, x); 
     }
     \end{lstlisting}
 \end{document}
