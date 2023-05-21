@@ -58,5 +58,24 @@
             \item Dziecko pomiędz kluczem k1 a kluczem k2, zawiera klucze większe
             od k1 i mniejsze od k2
         \end{enumerate} 
+
+    \section*{Zadanie 3}
+    W B-drzewie o t = 10 podaj wzory i wyniki numeryczne określające:
+    \begin{itemize} 
+        \item ile kluczy może zawierać korzeń (podaj przedział)
+        Korzeń może zawierać od 1 do 20(2t - 1) kluczy
+        \item ile dzieci może mieć korzeń (podaj przedział),
+        Korzeń może mieć od 2(dla n = 1) do 20 dzieci(dla n = 19) 
+        \item ile kluczy może mieć potomek korzenia (podaj przedział),
+        Potomek korzenia może zawierać od 9(t - 1) do 19(2t - 1) kluczy
+        \item ile dzieci może mieć potomek korzenia (podaj przedział),
+        Potomek korzenia może mieć od 10(t) do 20(2t) dzieci
+        \item ile maksymalnie węzłów może być na k-tym poziomie (przyjmując,
+        że korzeń to poziom 0),
+        Na k-tym poziomie może być maksymalnie $(2t)^k$ węzłów
+        \item ile łącznie kluczy może być na k-tym poziomie (podaj przedział).
+        Maksymalnie: $(2t)^k * (2t - 1)$
+        Minimalnie: $(2t)^{k - 1} * (t - 1)$
+    \end{itemize}
     
 \end{document}
